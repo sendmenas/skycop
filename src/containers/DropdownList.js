@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { optionSelected } from '../actions';
+import { showSelectedData } from '../actions';
 import SelectionList from '../components/SelectionList'
 
-const getOptionsFromData = (data) => {
-    if (data.payload) {
-        return data.payload
+const getOptionsFromData = options => {
+    if (options) {
+        return options;
     } else {
         return [];
     }
@@ -12,13 +12,13 @@ const getOptionsFromData = (data) => {
 
 const mapStateToProps = state => {
     return {
-        options: getOptionsFromData(state.data),
+        options: getOptionsFromData(state.options),
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onOptionSelected: id => {
+        onChange: id => {
             dispatch(showSelectedData(id));
         }
     }

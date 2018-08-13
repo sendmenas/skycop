@@ -4,17 +4,18 @@ import PropTypes from 'prop-types';
 let id = 0;
 
 const SelectionList = ({ options, onChange }) => (
-    <select onChange={(evt) => onChange(options.find(function(option) { if (evt.target.value === option.title) { return option; }}))}>
+    <select onChange={(evt) => onChange(evt.target.value)}>
+        <option key={id} value='none'>Not selected</option>
         {options.map((item) => (
             <option
-                key={id++}
+                key={++id}
                 value={item.title}
             >
                 {item.title}
             </option>
         ))}
     </select>
-);
+)
 
 SelectionList.propTypes = {
     options: PropTypes.array.isRequired,

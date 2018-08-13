@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { getData } from '../actions';
+import { fetchData } from '../actions';
 import GetDataButton from '../components/GetDataButton';
 
 const mapDispatchToProps = dispatch => {
     return {
-        getData: () => dispatch(getData()),
+        getData: () => dispatch(fetchData()),
     }
 }
 

@@ -1,21 +1,34 @@
 import { combineReducers } from 'redux';
-import { DATA_RECEIVED, OPTION_SELECTED } from '../actions';
+import { GET_DATA, OPTION_SELECTED, DATA_RECEIVED } from '../actions';
 
-function options(state = [], action) {
+function options(state = {
+    isFetching: false,
+    items: [],
+}, action) {
     switch (action.type) {
+        case GET_DATA:
+            return Object.assign({}, state, { isFetching:true });
+        //     fetch('https://raw.githubusercontent.com/sendmenas/skycop/master/response.json').then(res => res.json()).then(
+        //         (result) => {
+        //             console.log(result);
+        //             return result.data.payload;
+        //         },
+        //         (error) => {
+        //             console.log(error);
+        //         }
+        //     )
+        //     break;
         case DATA_RECEIVED:
-            if (action.data.payload) {
-                return action.data.payload;
-            } else {
-                return state;
-            }
+            return Object.assign({}, state, {
+                isFetching:false,
+                items: action.data,
+            });
         default:
             return state;
     }
 }
 
 function selectedOption(state = {}, action) {
-    console.log(action);
     switch(action.type) {
         case OPTION_SELECTED:
             return action;

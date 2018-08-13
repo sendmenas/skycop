@@ -16,11 +16,9 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = ({dispatch}) => {
     return {
-        onChange: id => {
-            dispatch(showSelectedData(id));
-        }
+        onChange: id => dispatch(showSelectedData(id)),
     }
 }
 

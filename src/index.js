@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import skycopApp from './reducers/skycopApp';
 import App from './components/App';
-import { onDataReceived } from './actions';
 
 const store = createStore(skycopApp);
 

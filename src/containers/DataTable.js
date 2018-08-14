@@ -3,7 +3,7 @@ import Data from '../components/Data'
 
 const mapStateToProps = (state) => {
     return {
-        option: state.selectedOption,
+        option: state.options.selectedOption,
     }
 }
 

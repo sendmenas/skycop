@@ -7,10 +7,6 @@ import skycopApp from './reducers/skycopApp';
 import App from './components/App';
 
 const store = createStore(skycopApp, applyMiddleware(thunkMiddleware));
-console.log(store.getState());
-store.subscribe(() =>
-  console.log(store.getState())
-)
 
 render(
     <Provider store={store}>

@@ -8,9 +8,9 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = (dispatch, title) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        onChange: dispatch(showSelectedData(title))
+        onChange: (evt) => {dispatch(showSelectedData(evt.target.value))},
     }
 }
 

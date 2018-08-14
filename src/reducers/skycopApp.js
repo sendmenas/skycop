@@ -4,7 +4,7 @@ import { GET_DATA, OPTION_SELECTED, DATA_RECEIVED } from '../actions';
 function options(state = {
         selectedOption: {
                 id:"Not selected",
-                title:""
+                title:"Not selected"
         },
         isFetching: false,
         items: [],
@@ -18,11 +18,17 @@ function options(state = {
                 items: action.data,
             });
         case OPTION_SELECTED:
-            return Object.assign({}, state, { selectedOption: state.items.find(function(option) {
+            let item = state.items.find(function(option) {
                 if (action.title === option.title) {
                     return option;
                 }
-            })});
+            });
+
+            if (item != null) {
+                return Object.assign({}, state, { selectedOption: item });
+            } else {
+                return Object.assign({}, state, { selectedOption: {id:"Not selected", title:"Not selected"}});
+            }
         default:
             return state;
     }
